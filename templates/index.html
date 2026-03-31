@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Barbería</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            margin: auto;
+            text-align: center;
+        }
+
+        input, button {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        button {
+            background: black;
+            color: white;
+            border: none;
+        }
+
+        a {
+            display: block;
+            margin-top: 10px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Registrar Corte</h2>
+
+    <form action="/agregar" method="POST">
+        <input type="text" name="barbero" placeholder="Nombre del barbero" required>
+        <input type="number" name="precio" placeholder="Precio del corte" required>
+        <button type="submit">Registrar</button>
+    </form>
+
+    <a href="/reporte">Ver Reporte</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reporte</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .barbero {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        a {
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<a href="/">⬅ Volver</a>
+
+<div class="card">
+    <h2>Filtrar por fechas</h2>
+    <form method="GET">
+        Desde: <input type="date" name="desde" value="{{ desde }}">
+        Hasta: <input type="date" name="hasta" value="{{ hasta }}">
+        <button type="submit">Filtrar</button>
+    </form>
+</div>
+
+<div class="card">
+    <h2>Total general</h2>
+    <h1>S/ {{ total }}</h1>
+</div>
+
+<div class="card">
+    <h2>Detalle por barbero</h2>
+
+    {% for b in barberos %}
+    <div class="barbero">
+        <h3>{{ b.nombre }}</h3>
+
+        <ul>
+            {% for c in b.cortes %}
+            <li>Corte: S/ {{ c }} → Gana: S/ {{ c * 0.5 }}</li>
+            {% endfor %}
+        </ul>
+
+        <p><strong>Total generado:</strong> S/ {{ b.total }}</p>
+        <p><strong>Total ganado (50%):</strong> S/ {{ b.ganancia }}</p>
+    </div>
+    {% endfor %}
+
+</div>
+
+<div class="card">
+    <h2>Barbería</h2>
+
+    <p>Total barbería (50%): S/ {{ ganancia_barberia }}</p>
+    <p>Cada socio: S/ {{ ganancia_por_socio }}</p>
+
+    <h3>Ganancia total por barbero</h3>
+    <ul>
+        {% for b in barberos %}
+        <li>{{ b.nombre }}: S/ {{ b.ganancia }}</li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+</body>
+</html>
